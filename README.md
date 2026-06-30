@@ -4,16 +4,11 @@
 [![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue)](pyproject.toml)
 [![CI](https://github.com/AeroTUBerlin/PINN_funcs/actions/workflows/ci.yml/badge.svg)](https://github.com/AeroTUBerlin/PINN_funcs/actions/workflows/ci.yml)
 
-Utility package for **Physics-Informed Neural Networks (PINNs)** in experimental aerodynamics research.
+Utility package for **Physics-Informed Neural Networks (PINNs)** in experimental aerodynamics research using the TensorFlow / Keras backend.
 
 This repository is intended to:
 - provide a practical starting point for PINN research on inverse problems in experimental aerodynamics,
-- reproduce results for the Rhombus Euler case from the associated article
-
-## Scope
-
-- **Backend:** TensorFlow / Keras.
-- **Distribution:** GitHub repository (no PyPI release planned at this stage).
+- enable reproduction of the results for the rhombus airfoil case from Rohlfs et al. 2026
 
 ## Installation
 
@@ -37,10 +32,12 @@ pre-commit install  # optional: run lint + tests on every local commit
 - Python 3.12
 - TensorFlow 2.17.1
 - Keras 3.13.2
+- CUDA 12.3
+- cuDNN 8.9.2
 
 ## Data
 
-The Rhombus Euler example can be fetched from the project's GitHub Release using:
+The data for the Rhombus example can be fetched from the project's Release using:
 
 ```bash
 python helpers/fetch_data.py
@@ -48,17 +45,15 @@ python helpers/fetch_data.py
 
 This downloads `examples/data/rhombus/rhombus_euler_bundle_v1.npz`.
 
-## Reproduce the Rhombus Euler case (paper)
+## Reproduce the Rhombus Airfoil case (paper)
 
-Run all three configurations from the article:
+Run all three configurations from the article (Sim. BOS; PIQS (no BC); PIQS):
 
 ```bash
 python examples/Rhombus/run_rhombus_repro.py
 ```
 
-This trains `rhombus_euler_paper_baseline`, `rhombus_euler_paper_PIQS_off`, and
-`rhombus_euler_paper_PIQS_on` (configs in `examples/configs/`), writing trained models, plots,
-and metrics under `examples/Rhombus/results/<case_name>/<timestamp>/`.
+Trained models, plots, and metrics are saved under `examples/Rhombus/results/<case_name>/<timestamp>/`.
 
 For a single, hand-editable run (hyperparameters inline rather than loaded from a config file):
 
@@ -72,16 +67,6 @@ python examples/Rhombus/Rhombus_Euler_rxy_cflearn.py
 - Keep case-specific logic inside `examples/`; keep reusable pieces in `PINN_funcs/`.
 - Start from the Rhombus example to understand the end-to-end workflow for density-gradient assimilation.
 - See `docs/architecture.md` for a module-by-module overview.
-
-## Public API guidance
-
-Prefer explicit module imports in new code, e.g.:
-
-- `from PINN_funcs.data_handling import DataHandler`
-- `from PINN_funcs.training import train_model`
-
-Top-level `import PINN_funcs` re-exports convenience symbols, but module-level imports are
-clearer and more stable long-term.
 
 ## Development
 
@@ -97,4 +82,10 @@ This project is licensed under **GNU GPL v3.0**. See `LICENSE`.
 
 ## Citation
 
-If you use this software in academic work, please cite it using `CITATION.cff`.
+If you use this software, please cite our work:
+```bash
+Rohlfs, L., Weiss, J. 
+Quantitative Schlieren with Physics-Informed Neural Networks.
+Exp Fluids 67, 94 (2026).
+https://doi.org/10.1007/s00348-026-04268-1
+´´´

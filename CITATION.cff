@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
+message: "If you use this software in your research, please cite the article below."
 title: "PINN_funcs"
 authors:
   - family-names: "Rohlfs"
@@ -15,3 +15,18 @@ keywords:
   - "fluid mechanics"
   - "physics-informed neural networks"
   - "tensorflow"
+
+preferred-citation:
+  type: article
+  title: "Quantitative Schlieren with Physics-Informed Neural Networks"
+  authors:
+    - family-names: "Rohlfs"
+      given-names: "Lennart"
+    - family-names: "Weiss"
+      given-names: "Julien"
+  journal: "Experiments in Fluids"
+  volume: 67
+  issue: 7
+  year: 2026
+  doi: "10.1007/s00348-026-04268-1"
+  url: "https://doi.org/10.1007/s00348-026-04268-1"
