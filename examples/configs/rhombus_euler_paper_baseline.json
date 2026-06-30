@@ -1,0 +1,59 @@
+{
+  "comment": "Simulated BOS",
+  "data": {
+    "name": "Rhombus_Euler/BOS_simulated",
+    "bundle_path": "examples/data/rhombus/rhombus_euler_bundle_v1.npz",
+    "save_path": "examples/Rhombus",
+    "xi": [0, 1],
+    "Ma": 3.0,
+    "L": 0.081670913853
+  },
+  "nn_training": {
+    "NN_type": "get_model_fourier_norm",
+    "train_vars": ["rx", "ry"],
+    "val_vars": ["u", "v", "p", "r"],
+    "optimizer": "soap",
+    "soap_precondition_frequency": 32,
+    "adam_eps": 1e-07,
+    "adam_WD": 0.0,
+    "lr_schedule": "CosineDecay",
+    "lr_warmup": 0.001,
+    "lr_warmup_steps": 1000,
+    "lr_decay": 0.01,
+    "lr_start": 0.0001,
+    "jit_compile": true,
+    "steps_per_execution": 16,
+    "data_policy": "mixed_float16",
+    "auto_scale_loss": true,
+    "random_seed": 42,
+    "print_freq": 10,
+    "eval_freq": 25,
+    "save_freq": 200,
+    "update_freq": 0,
+    "loss_weights": {
+      "lambda_data": 1.0,
+      "lambda_BC": 1.0,
+      "lambda_PDE": 0.01
+    },
+    "BC_weights": {
+      "wall": 0.01,
+      "shock": [0.0, 0.0, 0.0]
+    },
+    "batch_size": 4096,
+    "steps": [100000, 1],
+    "cal_exp_trainable": false,
+    "cal_initial_guess": 1.0,
+    "cal_base": 2.0
+  },
+  "nn_args": {
+    "input_shape": [2],
+    "output_shape": 4,
+    "n_layers": 4,
+    "n_neurons": 128,
+    "activation": "swish",
+    "sigma": 0.1,
+    "ff_scale": 256,
+    "RWF": true
+  },
+  "protocol": "examples/Rhombus/Log_Rhombus.csv"
+}

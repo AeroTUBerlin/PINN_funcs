@@ -1,0 +1,17 @@
+name: pinns_tf
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12.7
+  - numpy=1.26.4
+  - scipy=1.12.0
+  - matplotlib=3.8.3
+  - pip:
+      - tensorflow==2.17.1
+      - keras==3.13.2
+      - pydoe==0.3.8
+      - opencv-python-headless==4.11.0.86
+# `tensorflow[and-cuda]` pulls in matching nvidia-*-cu12 wheels automatically on Linux with a
+# GPU; install it explicitly (`pip install tensorflow[and-cuda]==2.17.1`) if you need GPU support.
+# Dev tooling (pytest, ruff, pre-commit, build) lives in pyproject.toml's `dev` extra:
+#   python -m pip install -e .[dev]

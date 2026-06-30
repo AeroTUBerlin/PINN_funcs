@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "PINN_funcs"
+authors:
+  - family-names: "Rohlfs"
+    given-names: "Lennart"
+    email: "l.rohlfs@tu-berlin.de"
+license: "GPL-3.0-only"
+repository-code: "https://github.com/AeroTUBerlin/PINN_funcs"
+version: "0.1.0"
+date-released: "2026-02-17"
+abstract: "TensorFlow-based reusable utilities for Physics-Informed Neural Networks in fluid mechanics."
+keywords:
+  - "PINN"
+  - "fluid mechanics"
+  - "physics-informed neural networks"
+  - "tensorflow"
