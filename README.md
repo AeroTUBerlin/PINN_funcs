@@ -88,4 +88,4 @@ Rohlfs, L., Weiss, J.
 Quantitative Schlieren with Physics-Informed Neural Networks.
 Exp Fluids 67, 94 (2026).
 https://doi.org/10.1007/s00348-026-04268-1
-´´´
+```
